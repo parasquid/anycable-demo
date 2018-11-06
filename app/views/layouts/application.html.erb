@@ -13,15 +13,17 @@
   </head>
 
   <body>
-    <% if @current_user %>
-      Hello <%= @current_user.name %>! <%= link_to "logout", sessions_path, method: :delete%>
-    <% else %>
-      <%= form_for @session do |f| %>
-        Login: <%= f.text_field :name %>
-        <%= f.submit %>
+    <div class="container">
+      <% if @current_user %>
+        Hello <%= @current_user.name %>! <%= link_to "logout", sessions_path, method: :delete%>
+      <% else %>
+        <%= form_for @session do |f| %>
+          Login: <%= f.text_field :name %>
+          <%= f.submit %>
+        <% end %>
       <% end %>
-    <% end %>
 
-    <%= yield %>
+      <%= yield %>
+    </div>
   </body>
 </html>

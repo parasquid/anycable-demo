@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AnycableDemo</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+  </head>
+
+  <body>
+    <% if @current_user %>
+      Hello <%= @current_user.name %>! <%= link_to "logout", sessions_path, method: :delete%>
+    <% else %>
+      <%= form_for @session do |f| %>
+        Login: <%= f.text_field :name %>
+        <%= f.submit %>
+      <% end %>
+    <% end %>
+
+    <%= yield %>
+  </body>
+</html>

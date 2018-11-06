@@ -1,0 +1,22 @@
+<h1><%= @post.title %></h1>
+<h2><%= @post.content %></h2>
+
+<ul class="comments">
+  <% @post.comments.each do |comment| %>
+    <li>
+      <%= comment.content %> - <%= comment.user.name %>
+    </li>
+  <% end %>
+</ul>
+
+<% if @current_user %>
+  <h3>Add a comment</h3>
+  <div id="comments" data-post-id="<%= @post.id %>">
+    <comment-form
+      user-id="<%= @current_user.id %>"
+      post-id="<%= @post.id %>"
+    />
+  </div>
+<% end %>
+
+<%= link_to "back to index", root_path %>

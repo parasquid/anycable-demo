@@ -86,3 +86,9 @@ production:
   database: anycable-demo_production
   username: anycable-demo
   password: <%= ENV['ANYCABLE-DEMO_DATABASE_PASSWORD'] %>
+
+vagrant:
+  <<: *default
+  database: vagrant
+  username: vagrant
+  password: <%= ENV['DATABASE_PASSWORD'] %>
